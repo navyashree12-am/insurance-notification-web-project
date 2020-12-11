@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Policy Reminder Notification</title>
+    <style>
+        .main {
+            font-family: Arial, Helvetica, sans-serif;
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .title {
+            border: 1px solid #7C9BC9;
+            background-color: #DAE9FC;
+            text-align: center;
+            width: 95%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #customers {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td,
+        #customers th {
+            border: 2px solid #A7C942;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(odd) {
+            background-color: #EAF2D3;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #9CC12B;
+            color: white;
+        }
+
+        #customers th.last {
+            border-right: hidden;
+        }
+
+        #customers td.last {
+            border-left: hidden;
+        }
+
+        input:checked {
+            border: none;
+            color: #009587;
+        }
+
+        .button {
+            vertical-align: bottom;
+            float: right;
+            margin-top: 20px;
+            background-color: #0058D8;
+            color: white;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+    </style>
+    <script>
+        function toggle(source) {
+            checkboxes = document.getElementsByClassName('checkbox');
+            for (var i = 0, n = checkboxes.length; i < n; i++) {
+                checkboxes[i].checked = source.checked;
+            }
+        }
+        function ShowAlert() {
+            alert("Your Policy is due for renewal - please pay the amount due");
+            checkboxes = document.getElementsByClassName('checkbox');
+            for (var i = 0, n = checkboxes.length; i < n; i++) {
+                checkboxes[i].disabled = true;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="main">
+        <div class="title">Insurance Policy Reminder Notification</div>
+        <table id="customers">
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th class="last">Sum Insured</th>
+                <th><input type="checkbox" class="checkbox" onClick="toggle(this)" /></th>
+            </tr>
+            <tr>
+                <td>Sally Lu</td>
+                <td>25</td>
+                <td>25,000</td>
+                <td class="last"><input type="checkbox" name="first" class="checkbox" /></td>
+            </tr>
+            <tr>
+                <td>David</td>
+                <td>35</td>
+                <td>1,00,00</td>
+                <td class="last"><input type="checkbox" name="second" class="checkbox" /></td>
+            </tr>
+            <tr>
+                <td>Stephen</td>
+                <td>58</td>
+                <td>90,000</td>
+                <td class="last"><input type="checkbox" name="third" class="checkbox" /></td>
+            </tr>
+            <tr>
+                <td>Charlie</td>
+                <td>31</td>
+                <td>12,000</td>
+                <td class="last"><input type="checkbox" name="fourth" class="checkbox" /></td>
+            </tr>
+        </table>
+        <button class="button" onclick="ShowAlert()">Send Notification</button>
+    </div>
+</body>
+
+</html>
